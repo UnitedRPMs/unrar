@@ -1,5 +1,5 @@
 Name:           unrar
-Version:        5.2.3
+Version:        5.4.5
 Release:        1%{?dist}
 Summary:        Utility for extracting, testing and viewing RAR archives
 License:        Freeware with further limitations
@@ -8,7 +8,6 @@ URL:            http://www.rarlab.com/rar_add.htm
 Source0:        ftp://ftp.rarlab.com/rar/unrarsrc-%{version}.tar.gz
 # Man page from Debian
 Source1:        unrar-nonfree.1
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 Requires(post): chkconfig
 Requires(preun): chkconfig
@@ -25,7 +24,7 @@ Summary:        Decompress library for RAR v3 archives
 Group:          System Environment/Libraries
 
 # Packages using libunrar must Requires this:
-#{?unrar_version:Requires: libunrar%{_isa} = %{unrar_version}}
+#{?unrar_version:Requires: libunrar%%{_isa} = %%{unrar_version}}
 
 %description -n libunrar
 The libunrar library allows programs linking against it to decompress
@@ -50,10 +49,12 @@ cp -p %SOURCE1 .
 
 %build
 make %{?_smp_mflags} -f makefile \
-  CXX="%{__cxx}" CXXFLAGS="$RPM_OPT_FLAGS -fPIC -DPIC" STRIP=: RANLIB=ranlib
+  CXX="%{__cxx}" CXXFLAGS="$RPM_OPT_FLAGS -fPIC -DPIC" LDFLAGS="$RPM_LD_FLAGS -pthread" \
+  STRIP=: RANLIB=ranlib
 make %{?_smp_mflags} -f makefile clean
 make %{?_smp_mflags} -f makefile lib \
-  CXX="%{__cxx}" CXXFLAGS="$RPM_OPT_FLAGS -fPIC -DPIC" STRIP=: RANLIB=ranlib
+  CXX="%{__cxx}" CXXFLAGS="$RPM_OPT_FLAGS -fPIC -DPIC" LDFLAGS="$RPM_LD_FLAGS -pthread" \
+  STRIP=: RANLIB=ranlib
 
 
 %install
@@ -78,10 +79,6 @@ EOF
 touch -r license.txt %{buildroot}%{_sysconfdir}/rpm/macros.unrar
 
 
-%clean
-rm -rf %{buildroot}
-
-
 %post
 %{_sbindir}/alternatives \
     --install %{_bindir}/unrar unrar %{_bindir}/unrar-nonfree 50 \
@@ -101,25 +98,29 @@ fi
 
 
 %files
-%defattr(-,root,root,-)
-%doc license.txt readme.txt
+%doc readme.txt
+%license license.txt
 %ghost %{_bindir}/unrar
 %{_bindir}/unrar-nonfree
 %{_mandir}/man1/unrar-nonfree.1*
 
 %files -n libunrar
-%defattr(-,root,root,-)
-%doc license.txt readme.txt
+%doc readme.txt
+%license license.txt
 %{_libdir}/*.so
 
 %files -n libunrar-devel
-%defattr(-,root,root,-)
-%doc license.txt readme.txt
+%doc readme.txt
+%license license.txt
 %config %{_sysconfdir}/rpm/macros.unrar
 %{_includedir}/*
 
 
 %changelog
+* Sat Aug 27 2016 Pavlo Rudyi <paulcarroty at riseup.net> - 5.4.5-1
+- Update to 5.4.5
+- Import RF improvements
+
 * Sat Dec 06 2014 Nicolas Chauvet <kwizart@gmail.com> - 5.2.3-1
 - Update to 5.2.3
 
@@ -149,7 +150,7 @@ fi
 - Bump version (#2508)
 - Fix unrar-4.2.3-fix-build.patch diff to have context
 
-* Thu May 28 2012 Marcos Mello <marcosfrm AT gmail DOT com> - 4.2.3-1
+* Mon May 28 2012 Marcos Mello <marcosfrm AT gmail DOT com> - 4.2.3-1
 - New version
 - Include all header files in the -devel package (#1988)
 
