@@ -1,1 +1,8 @@
-unrarsrc-5.2.3.tar.gz
+BUILD/*
+BUILDROOT/*
+RPMS/*
+SPECS/*
+SRPMS/*
+unrarsrc*.tar.gz
+.directory
+

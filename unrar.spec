@@ -1,6 +1,6 @@
 Name:           unrar
-Version:        5.4.5
-Release:        1%{?dist}
+Version:        5.5.5
+Release:        2%{?dist}
 Summary:        Utility for extracting, testing and viewing RAR archives
 License:        Freeware with further limitations
 Group:          Applications/Archiving
@@ -117,6 +117,10 @@ fi
 
 
 %changelog
+
+* Sat Jun 24 2017 Unitedrpms Project <unitedrpms AT protonmail DOT com> - 5.5.5-2
+- Updated to 5.5.5-2
+
 * Sat Aug 27 2016 Pavlo Rudyi <paulcarroty at riseup.net> - 5.4.5-1
 - Update to 5.4.5
 - Import RF improvements
