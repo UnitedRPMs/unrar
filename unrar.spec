@@ -5,7 +5,7 @@ Summary:        Utility for extracting, testing and viewing RAR archives
 License:        Freeware with further limitations
 Group:          Applications/Archiving
 URL:            http://www.rarlab.com/rar_add.htm
-Source0:        ftp://ftp.rarlab.com/rar/unrarsrc-%{version}.tar.gz
+Source0:        http://www.rarlab.com/rar/unrarsrc-%{version}.tar.gz
 # Man page from Debian
 Source1:        unrar-nonfree.1
 
