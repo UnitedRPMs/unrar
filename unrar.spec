@@ -9,6 +9,7 @@ Source0:        http://www.rarlab.com/rar/unrarsrc-%{version}.tar.gz
 # Man page from Debian
 Source1:        unrar-nonfree.1
 
+BuildRequires:  gcc-c++
 Requires(post): chkconfig
 Requires(preun): chkconfig
 
