@@ -1,5 +1,22 @@
+#
+# spec file for package unrar
+#
+# Copyright (c) 2020 UnitedRPMs.
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://goo.gl/zqFJft
+#
+
 Name:           unrar
-Version:        5.8.5
+Version:        5.9.1
 Release:        7%{?dist}
 Summary:        Utility for extracting, testing and viewing RAR archives
 License:        Freeware with further limitations
@@ -118,6 +135,9 @@ fi
 
 
 %changelog
+
+* Fri Jan 31 2020 Unitedrpms Project <unitedrpms AT protonmail DOT com> - 5.9.1-7
+- Updated to 5.9.1
 
 * Fri Dec 13 2019 Unitedrpms Project <unitedrpms AT protonmail DOT com> - 5.8.5-7
 - Updated to 5.8.5
