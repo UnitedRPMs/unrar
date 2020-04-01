@@ -16,7 +16,7 @@
 #
 
 Name:           unrar
-Version:        5.9.1
+Version:        5.9.2
 Release:        7%{?dist}
 Summary:        Utility for extracting, testing and viewing RAR archives
 License:        Freeware with further limitations
@@ -25,6 +25,7 @@ URL:            http://www.rarlab.com/rar_add.htm
 Source0:        http://www.rarlab.com/rar/unrarsrc-%{version}.tar.gz
 # Man page from Debian
 Source1:        unrar-nonfree.1
+Source2:	com.spotify.spotify.metainfo.xml
 
 BuildRequires:  gcc-c++
 Requires(post): chkconfig
@@ -96,6 +97,9 @@ cat > %{buildroot}%{_sysconfdir}/rpm/macros.unrar << EOF
 EOF
 touch -r license.txt %{buildroot}%{_sysconfdir}/rpm/macros.unrar
 
+# Install AppData
+  install -Dm 0644 %{S:2} %{buildroot}/%{_metainfodir}/com.rarlab.unrar.metainfo.xml
+
 
 %post
 %{_sbindir}/alternatives \
@@ -121,6 +125,7 @@ fi
 %ghost %{_bindir}/unrar
 %{_bindir}/unrar-nonfree
 %{_mandir}/man1/unrar-nonfree.1*
+%{_metainfodir}/com.rarlab.unrar.metainfo.xml
 
 %files -n libunrar
 %doc readme.txt
@@ -135,6 +140,9 @@ fi
 
 
 %changelog
+
+* Tue Mar 31 2020 Unitedrpms Project <unitedrpms AT protonmail DOT com> - 5.9.2-7
+- Updated to 5.9.2
 
 * Fri Jan 31 2020 Unitedrpms Project <unitedrpms AT protonmail DOT com> - 5.9.1-7
 - Updated to 5.9.1

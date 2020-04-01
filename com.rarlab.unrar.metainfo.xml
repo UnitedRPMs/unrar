@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="console-application">
+  <id>com.rarlab.unrar</id>
+  
+  <name>unrar</name>
+  <summary>Utility for extracting, testing and viewing RAR archives</summary>
+  
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>LicenseRef-proprietary:Unrar</project_license>
+  
+  <description>
+    <p>
+      The unrar utility is a freeware program for extracting, testing and viewing the contents of archives created with the RAR archiver version 1.50 and above.
+    </p>
+  </description>
+  
+  <icon type="stock">unrar</icon>
+  
+  <categories>
+    <category>Utility</category>
+    <category>Compression</category>
+  </categories>
+  
+  <provides>
+    <binary>unrar</binary>
+  </provides>
+</component>
