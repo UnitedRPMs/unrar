@@ -25,7 +25,7 @@ URL:            http://www.rarlab.com/rar_add.htm
 Source0:        http://www.rarlab.com/rar/unrarsrc-%{version}.tar.gz
 # Man page from Debian
 Source1:        unrar-nonfree.1
-Source2:	com.spotify.spotify.metainfo.xml
+Source2:	com.rarlab.unrar.metainfo.xml
 
 BuildRequires:  gcc-c++
 Requires(post): chkconfig
