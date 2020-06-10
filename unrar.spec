@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://goo.gl/zqFJft
 #
 
+%define _legacy_common_support 1
+
 Name:           unrar
 Version:        5.9.3
 Release:        7%{?dist}
