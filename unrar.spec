@@ -17,6 +17,9 @@
 
 %define _legacy_common_support 1
 
+%undefine _debugsource_packages
+
+
 Name:           unrar
 Version:        5.9.3
 Release:        7%{?dist}
@@ -66,23 +69,22 @@ developing applications that use libunrar.
 %prep
 %setup -q -n %{name}
 cp -p %SOURCE1 .
+  sed -e '/CXXFLAGS=/d' -e '/LDFLAGS=/d' -i makefile 
 
 
 %build
-make %{?_smp_mflags} -f makefile \
-  CXX="%{__cxx}" CXXFLAGS="$RPM_OPT_FLAGS -fPIC -DPIC" LDFLAGS="$RPM_LD_FLAGS -pthread" \
-  STRIP=: RANLIB=ranlib
-make %{?_smp_mflags} -f makefile clean
-make %{?_smp_mflags} -f makefile lib \
-  CXX="%{__cxx}" CXXFLAGS="$RPM_OPT_FLAGS -fPIC -DPIC" LDFLAGS="$RPM_LD_FLAGS -pthread" \
-  STRIP=: RANLIB=ranlib
+
+  cp -rf %{_builddir}/unrar %{_builddir}/libunrar
+  export LDFLAGS+=' -pthread'
+  make -C %{_builddir}/libunrar lib
+  make -j1
 
 
 %install
 rm -rf %{buildroot}
 install -Dpm 755 unrar %{buildroot}%{_bindir}/unrar-nonfree
 install -Dpm 644 unrar-nonfree.1 %{buildroot}%{_mandir}/man1/unrar-nonfree.1
-install -Dpm 755 libunrar.so %{buildroot}%{_libdir}/libunrar.so
+install -Dpm 755 %{_builddir}/libunrar/libunrar.so %{buildroot}%{_libdir}/libunrar.so
 mkdir -p -m 755 %{buildroot}/%{_includedir}/unrar
 for i in *.hpp; do
     install -Dpm 644 $i %{buildroot}/%{_includedir}/unrar
