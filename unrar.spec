@@ -1,7 +1,7 @@
 #
 # spec file for package unrar
 #
-# Copyright (c) 2020 UnitedRPMs.
+# Copyright (c) 2021 UnitedRPMs.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 
 Name:           unrar
-Version:        6.0.3
+Version:        6.0.5
 Release:        7%{?dist}
 Summary:        Utility for extracting, testing and viewing RAR archives
 License:        Freeware with further limitations
@@ -144,6 +144,9 @@ fi
 
 
 %changelog
+
+* Mon Apr 26 2021 Unitedrpms Project <unitedrpms AT protonmail DOT com> - 6.0.5-7
+- Updated to 6.0.5
 
 * Sun Dec 20 2020 Unitedrpms Project <unitedrpms AT protonmail DOT com> - 6.0.3-7
 - Updated to 6.0.3
